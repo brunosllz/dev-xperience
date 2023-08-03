@@ -1,4 +1,4 @@
-import { Post } from "../domain/entities/post"
+import { Post } from '../domain/entities/post'
 
 export interface IPostRepository {
   create(post: Post): Promise<void>

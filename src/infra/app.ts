@@ -7,9 +7,7 @@ import { postRoutes } from '../modules/forum/routes/post-routes'
 const app = fastify()
 app.register(cors)
 
-
 app.register(postRoutes)
-
 
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {

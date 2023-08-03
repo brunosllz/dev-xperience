@@ -1,4 +1,4 @@
-import { randomUUID } from "node:crypto"
+import { randomUUID } from 'node:crypto'
 
 interface Props {
   title: string
@@ -31,12 +31,22 @@ export class Post {
     return this.props.content
   }
 
-  static create({title, description, content}: {title: string, description: string, content: string}, id?: string) {
-    const post = new Post({
-      content, 
-      description, 
-      title
-    }, id)
+  static create(
+    {
+      title,
+      description,
+      content,
+    }: { title: string; description: string; content: string },
+    id?: string,
+  ) {
+    const post = new Post(
+      {
+        content,
+        description,
+        title,
+      },
+      id,
+    )
 
     return post
   }

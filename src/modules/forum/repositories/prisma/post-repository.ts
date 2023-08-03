@@ -1,25 +1,25 @@
-import { PrismaClient } from "@prisma/client";
-import { Post } from "../../domain/entities/post";
-import { PostMapper } from "../../mappers/post-mapper";
-import { IPostRepository } from "../post-repository";
-
+import { PrismaClient } from '@prisma/client'
+import { Post } from '../../domain/entities/post'
+import { PostMapper } from '../../mappers/post-mapper'
+import { IPostRepository } from '../post-repository'
 
 const prisma = new PrismaClient()
 
-export class PrismaPostRepository implements IPostRepository{
+export class PrismaPostRepository implements IPostRepository {
   async create(post: Post) {
     const data = PostMapper.toPersistent(post)
-    
-    await prisma.post.create({data})
+
+    await prisma.post.create({ data })
   }
+
   async exists(title: string) {
     const post = await prisma.post.findUnique({
-      where:{
-        title
-      }
+      where: {
+        title,
+      },
     })
 
-    if(!post) {
+    if (!post) {
       return false
     }
 
@@ -28,12 +28,12 @@ export class PrismaPostRepository implements IPostRepository{
 
   async findById(id: string) {
     const post = await prisma.post.findUnique({
-      where:{
-        id
-      }
+      where: {
+        id,
+      },
     })
 
-    if(!post) {
+    if (!post) {
       return null
     }
 

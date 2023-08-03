@@ -1,5 +1,5 @@
-import { Post } from "../domain/entities/post";
-import {Post as RawPost} from '@prisma/client'
+import { Post } from '../domain/entities/post'
+import { Post as RawPost } from '@prisma/client'
 
 export class PostMapper {
   static toPersistent(post: Post): RawPost {
@@ -11,11 +11,11 @@ export class PostMapper {
     }
   }
 
-  static toDomain(post: RawPost): Post{
+  static toDomain(post: RawPost): Post {
     return Post.create({
       content: post.content,
       description: post.description,
-      title: post.title
+      title: post.title,
     })
   }
 }

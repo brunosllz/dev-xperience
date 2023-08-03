@@ -1,24 +1,24 @@
-import { Post } from "../../domain/entities/post";
-import { IPostRepository } from "../post-repository";
+import { Post } from '../../domain/entities/post'
+import { IPostRepository } from '../post-repository'
 
-export class InMemoryPostRepository implements IPostRepository{
-  private posts: Post[] = [];
-  
+export class InMemoryPostRepository implements IPostRepository {
+  private posts: Post[] = []
+
   async create(post: Post) {
     this.posts.push(post)
   }
 
   async exists(title: string) {
-    return this.posts.some(post => post.title === title)
+    return this.posts.some((post) => post.title === title)
   }
 
   async findById(id: string) {
-    const post = this.posts.find(post => post.id === id);
+    const post = this.posts.find((post) => post.id === id)
 
-    if(!post) {
+    if (!post) {
       return null
     }
 
-    return post 
+    return post
   }
 }

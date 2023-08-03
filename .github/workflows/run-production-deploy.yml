@@ -16,6 +16,6 @@ jobs:
         run: |
           touch .env
           echo DATABASE_URL=${{ secrets.DATABASE_URL_PROD_WITH_POOLER}}/neondb?pgbouncer=true&connect_timeout=10 >> .env
-          echo DIRECT_DATABASE_URL=${{ secrets.DIRECT_DATABASE_URL_PROD}}/neondb?connect_timeout=10 >> .env
+          echo DIRECT_URL=${{ secrets.DIRECT_DATABASE_URL_PROD}}/neondb?connect_timeout=10 >> .env
           npx prisma generate
           npx prisma migrate deploy

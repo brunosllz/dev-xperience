@@ -3,7 +3,7 @@ name: Lint
 on: [pull_request, push]
 
 jobs:
-  code:
+  run_lint:
     name: Lint code
     runs-on: ubuntu-latest
     steps:

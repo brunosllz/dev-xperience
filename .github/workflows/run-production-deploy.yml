@@ -7,10 +7,11 @@ on:
 
 jobs:
   run_deploy_production:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       
       - name: Run Prisma Migrate
         run: |

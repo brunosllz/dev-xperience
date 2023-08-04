@@ -14,8 +14,11 @@ jobs:
         uses: actions/checkout@v3
       
       - name: Run Prisma Migrate
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DIRECT_URL: ${{ secrets.DIRECT_URL }}
         run: |
           touch .env
-          echo DATABASE_URL=${{ secrets.DATABASE_URL}} >> .env
-          echo DIRECT_URL=${{ secrets.DIRECT_URL}} >> .env
+          echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
+          echo DIRECT_URL=${{ secrets.DIRECT_URL }} >> .env
           npx prisma migrate deploy

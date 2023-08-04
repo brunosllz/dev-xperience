@@ -17,8 +17,4 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           DIRECT_URL: ${{ secrets.DIRECT_URL }}
-        run: |
-          touch .env
-          echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
-          echo DIRECT_URL=${{ secrets.DIRECT_URL }} >> .env
-          npx prisma migrate deploy
+        run: npx prisma migrate deploy

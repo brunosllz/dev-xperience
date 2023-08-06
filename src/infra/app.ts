@@ -1,7 +1,7 @@
 import fastify from 'fastify'
 import cors from '@fastify/cors'
 import { ZodError } from 'zod'
-import { env } from './config/env'
+import { env } from '../config/env'
 import { postRoutes } from '../modules/forum/routes/post-routes'
 
 const app = fastify()

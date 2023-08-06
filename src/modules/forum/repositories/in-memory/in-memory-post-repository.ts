@@ -1,3 +1,4 @@
+import { UniqueEntityID } from '@/core/domain/unique-entity-id'
 import { Post } from '../../domain/entities/post'
 import { IPostRepository } from '../post-repository'
 
@@ -12,8 +13,10 @@ export class InMemoryPostRepository implements IPostRepository {
     return this.posts.some((post) => post.title === title)
   }
 
-  async findById(id: string) {
-    const post = this.posts.find((post) => post.id === id)
+  async findById(id: UniqueEntityID) {
+    const post = this.posts.find((post) =>
+      new UniqueEntityID(post.id.toString()).equals(id),
+    )
 
     if (!post) {
       return null

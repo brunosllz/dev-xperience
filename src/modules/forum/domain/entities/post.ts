@@ -1,4 +1,5 @@
-import { randomUUID } from 'node:crypto'
+import { Entity } from '@/core/domain/entity'
+import { UniqueEntityID } from '@/core/domain/unique-entity-id'
 
 interface Props {
   title: string
@@ -6,19 +7,7 @@ interface Props {
   content: string
 }
 
-export class Post {
-  private readonly props: Props
-  private readonly _id: string
-
-  private constructor(props: Props, id?: string) {
-    this.props = props
-    this._id = id ?? randomUUID()
-  }
-
-  get id() {
-    return this._id
-  }
-
+export class Post extends Entity<Props> {
   get title() {
     return this.props.title
   }
@@ -37,7 +26,7 @@ export class Post {
       description,
       content,
     }: { title: string; description: string; content: string },
-    id?: string,
+    id?: UniqueEntityID,
   ) {
     const post = new Post(
       {

@@ -1,4 +1,4 @@
-import { PrismaPostRepository } from '../../repositories/prisma/post-repository'
+import { PrismaPostRepository } from '../../repositories/prisma/prisma-post-repository'
 import { CreatePost } from '../../usecases/create-post'
 
 export function MakeCreatePostUseCase() {

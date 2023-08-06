@@ -1,4 +1,4 @@
-import { test, expect } from 'vitest'
+import { UniqueEntityID } from '@/core/domain/unique-entity-id'
 import { Post } from './post'
 
 test('create post', () => {
@@ -9,5 +9,5 @@ test('create post', () => {
   })
 
   expect(post.title).toEqual('title example')
-  expect(post.id).toEqual(expect.any(String))
+  expect(post.id).toBeInstanceOf(UniqueEntityID)
 })
